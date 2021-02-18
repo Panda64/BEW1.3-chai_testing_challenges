@@ -56,8 +56,6 @@ router.put('/:messageId', (req, res) => {
 
 /** Route to delete a message. */
 router.delete('/:messageId', (req, res) => {
-    // TODO: Delete the specified Message using `findByIdAndDelete`. Make sure
-    // to also delete the message from the User object's `messages` array
     Message.findByIdAndDelete(req.params.messageId).then((result) => {
         if (result === null) {
             return res.json({message: 'Message does not exist.'})
@@ -70,7 +68,6 @@ router.delete('/:messageId', (req, res) => {
     .catch((err) => {
         throw err.message
     })
-    // TODO: Return a JSON object indicating that the Message has been deleted
 })
 
 module.exports = router

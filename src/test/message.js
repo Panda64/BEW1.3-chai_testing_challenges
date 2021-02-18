@@ -108,10 +108,10 @@ describe('Message API endpoints', () => {
         .end((err, res) => {
             if (err) { done(err) }
             expect(res.body).to.be.an('object')
-            expect(res.body).to.have.property('title', 'test title three')
+            expect(res.body.title).to.equal('test title three')
 
             // check that user is actually inserted into database
-            Message.findOne({title: 'title test three'}).then(message => {
+            Message.findOne({title: 'test title three'}).then(message => {
                 expect(message).to.be.an('object')
                 done()
             })
